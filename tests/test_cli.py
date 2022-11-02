@@ -1,11 +1,7 @@
-from pathlib import Path
-
 import pytest
 from click.testing import CliRunner
 
 from pkgviz.cli import main
-
-TEST_DATA_DIR = Path("tests/test_data/")
 
 
 @pytest.fixture(scope="function")
@@ -31,11 +27,3 @@ def test_cli_run(runner, tmp_path):
     runner.invoke(main, ["-p", "math", "-o", str(output_path)])
 
     assert output_path.exists()
-
-    with open(TEST_DATA_DIR / "test.svg") as f:
-        expected_output = f.read()
-
-    with open(output_path) as f:
-        actual_output = f.read()
-
-    assert actual_output == expected_output
