@@ -9,6 +9,7 @@ Framework to visualise python packages.
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/AjinkyaIndulkar/pkgviz-python/dot/blob/main/LICENSE)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3106/)
 [![Code Check](https://github.com/AjinkyaIndulkar/pkgviz-python/actions/workflows/code-check.yaml/badge.svg)](https://github.com/AjinkyaIndulkar/pkgviz-python/actions/workflows/code-check.yaml)
+[![CI](https://github.com/AjinkyaIndulkar/pkgviz-python/actions/workflows/pkgviz-ci.yaml/badge.svg)](https://github.com/AjinkyaIndulkar/pkgviz-python/actions/workflows/pkgviz-ci.yaml)
 
 </div>
 
