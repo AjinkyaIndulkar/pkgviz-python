@@ -33,13 +33,6 @@ jobs:
           path: ~/.cache/pre-commit
           key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
 
-      - name: File Changes
-        id: file_changes
-        uses: trilom/file-changes-action@v1.2.4
-        with:
-          output: ''
-          fileOutput: ''
-
       - name: Download actionlint
         id: get_actionlint
         run: |
@@ -52,4 +45,4 @@ jobs:
       - name: Run pre-commit Hooks
         run: |
           PATH=$(dirname ${{ steps.get_actionlint.outputs.executable }}):"${PATH}" \
-          pre-commit run --files ${{ steps.file_changes.outputs.files }} --show-diff-on-failure
+          pre-commit run --all --show-diff-on-failure
