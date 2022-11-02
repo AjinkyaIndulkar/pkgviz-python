@@ -1,4 +1,7 @@
 import inspect
+import logging
+
+from rich.logging import RichHandler
 
 from .types import Node
 
@@ -67,3 +70,23 @@ def fetch_or_create_node(name, nodes) -> tuple[Node, set[Node]]:
         nodes.add(module_node)
 
     return module_node, nodes
+
+
+def get_logger(root_level: int = logging.INFO) -> logging.Logger:
+    """Creates logger instance.
+
+    Args:
+        root_level: root level logging value.
+
+    Returns:
+        logger instance.
+    """
+    if logging.root.handlers == []:
+        logging.basicConfig(
+            level=root_level, handlers=[RichHandler(rich_tracebacks=True)]
+        )
+
+    logger = logging.getLogger("pkgviz")
+    logger.setLevel(logging.root.level)
+
+    return logger
