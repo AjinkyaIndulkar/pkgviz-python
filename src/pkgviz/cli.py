@@ -27,7 +27,3 @@ def main(package_name: str, output_path: str):
     engine_client.save(output_path)
 
     logger.info("job complete.")
-
-
-if __name__ == "__main__":
-    main()
