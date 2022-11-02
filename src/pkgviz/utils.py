@@ -2,7 +2,8 @@ import inspect
 
 from .types import Node
 
-def construct_nodes(module, name:str=None, nodes:set[Node]=None):
+
+def construct_nodes(module, name: str = None, nodes: set[Node] = None):
     """Construct all nodes of input module.
 
     Args:
@@ -16,22 +17,33 @@ def construct_nodes(module, name:str=None, nodes:set[Node]=None):
 
     if not nodes:
         nodes = set()
-    
+
     module_node, nodes = fetch_or_create_node(name, nodes)
 
     for member_name, member_module in inspect.getmembers(module):
         # check if child module needs to be ignored
-        if "__" in member_name or  (inspect.ismodule(member_module) and name not in getattr(member_module, "__package__", "")) or (not inspect.ismodule(member_module) and name not in getattr(member_module, "__module__", "")):
+        if (
+            "__" in member_name
+            or (
+                inspect.ismodule(member_module)
+                and name not in getattr(member_module, "__package__", "")
+            )
+            or (
+                not inspect.ismodule(member_module)
+                and name not in getattr(member_module, "__module__", "")
+            )
+        ):
             continue
 
         member_node, nodes = fetch_or_create_node(member_name, nodes)
 
         module_node.children.append(member_node)
-        
+
         if inspect.ismodule(member_module):
             construct_nodes(member_module, member_name, nodes)
-                
+
     return nodes
+
 
 def fetch_or_create_node(name, nodes) -> tuple[Node, set[Node]]:
     """Fetch Node from set of constructed Nodes.
@@ -43,7 +55,7 @@ def fetch_or_create_node(name, nodes) -> tuple[Node, set[Node]]:
         nodes: set of constructed nodes.
 
     Returns:
-        tuple of fetched/constructed node and 
+        tuple of fetched/constructed node and
         updated set of constructed nodes.
     """
     constructed_node = [n for n in nodes if n.name == name]

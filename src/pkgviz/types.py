@@ -1,9 +1,10 @@
 class Node:
     """Base data structure of the visualiser engine.
 
-    A ``Node`` instance store a name for reference and a list of 
+    A ``Node`` instance store a name for reference and a list of
     ``Node`` children to construct the final graph.
     """
+
     def __init__(self, name):
         """Constructor method.
 
