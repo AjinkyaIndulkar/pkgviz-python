@@ -13,6 +13,33 @@ Framework to visualise python packages.
 </div>
 
 
+## Getting Started
+
+### Pre-requisites:
+
+The package uses `graphviz` as a dependency. You will need to install the required binaries for it.
+
+-   Linux: `sudo apt install graphviz`
+-   MacOS: `brew install graphviz`
+
+Refer to https://graphviz.org/download/ for more installation options.
+
+**Note**: It is recommended to setup a virtual environment of your choice before installing the package.
+
+### Install from PyPI:
+
+```
+pip install pkgviz-python
+```
+
+### Install from source:
+
+```
+git clone https://github.com/AjinkyaIndulkar/pkgviz-python
+cd pkgviz-python
+pip install .
+```
+
 ## CLI Usage
 
 Run the following command to generate a graph visualisation of the `math` package:
@@ -21,4 +48,10 @@ Run the following command to generate a graph visualisation of the `math` packag
 pkgviz -p math -o output/viz.svg
 ```
 
-The above command generates an SVG output.
+The above command should generate an SVG output as below:
+
+<div align="center">
+
+<img width="600px" src="assets/viz-demo.svg" alt="demo-viz" style="padding-top:50px;padding-bottom:50px">
+
+</div>
