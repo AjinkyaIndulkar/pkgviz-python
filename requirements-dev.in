@@ -1,0 +1,12 @@
+# dev
+pre-commit
+black
+flake8
+isort
+mypy
+
+# ci/cd
+pytest
+pytest-cov
+setuptools
+twine
