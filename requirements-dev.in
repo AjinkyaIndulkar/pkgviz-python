@@ -8,6 +8,7 @@ mypy
 # ci/cd
 pytest
 pytest-cov
-setuptools
 bumpversion
+setuptools
+wheel
 twine

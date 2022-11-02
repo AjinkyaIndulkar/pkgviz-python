@@ -128,6 +128,8 @@ virtualenv==20.16.6
     # via pre-commit
 webencodings==0.5.1
     # via bleach
+wheel==0.37.1
+    # via -r requirements-dev.in
 zipp==3.10.0
     # via importlib-metadata
 
