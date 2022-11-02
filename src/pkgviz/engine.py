@@ -4,7 +4,9 @@ from pathlib import Path
 import graphviz
 
 from .types import Node
-from .utils import construct_nodes
+from .utils import construct_nodes, get_logger
+
+logger = get_logger()
 
 
 class Engine:
@@ -30,10 +32,12 @@ class Engine:
 
     def construct(self):
         """Constructs a set of nodes from input module."""
+        logger.info("constructing nodes...")
         self.nodes = construct_nodes(self.module)
 
     def draw(self):
         """Draws a DOT graph using constructed set of nodes."""
+        logger.info("drawing graph from constructed nodes...")
         for node in self.nodes:
             if node.children:
                 for child in node.children:
@@ -45,6 +49,7 @@ class Engine:
         Args:
             output_path: path to save rendered visualisation.
         """
+        logger.info(f"saving graph to '{output_path}'...")
         self.graph.render(
             Path(output_path).stem, Path(output_path).parent, cleanup=True
         )
