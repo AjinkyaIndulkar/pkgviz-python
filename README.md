@@ -12,7 +12,6 @@ Framework to visualise python packages.
 
 </div>
 
-
 ## Getting Started
 
 ### Pre-requisites:
