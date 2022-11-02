@@ -1,0 +1,55 @@
+name: Code Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code-check:
+    if: |
+      github.event.pull_request.draft == false &&
+      !contains(github.event.pull_request.labels.*.name, 'skip:ci')
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.6
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: File Changes
+        id: file_changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: ''
+          fileOutput: ''
+
+      - name: Download actionlint
+        id: get_actionlint
+        run: |
+          curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash -s -- 1.6.21
+
+      - name: Download pre-commit
+        run: |
+          pip install -c requirements-dev.txt pre-commit
+
+      - name: Run pre-commit Hooks
+        run: |
+          PATH=$(dirname ${{ steps.get_actionlint.outputs.executable }}):"${PATH}" \
+          pre-commit run --files ${{ steps.file_changes.outputs.files }} --show-diff-on-failure
