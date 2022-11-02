@@ -46,5 +46,5 @@ class Engine:
             output_path: path to save rendered visualisation.
         """
         self.graph.render(
-            Path(output_path).name, Path(output_path).parent, cleanup=True
+            Path(output_path).stem, Path(output_path).parent, cleanup=True
         )
