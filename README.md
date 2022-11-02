@@ -11,3 +11,14 @@ Framework to visualise python packages.
 [![Code Check](https://github.com/AjinkyaIndulkar/pkgviz-python/actions/workflows/code-check.yaml/badge.svg)](https://github.com/AjinkyaIndulkar/pkgviz-python/actions/workflows/code-check.yaml)
 
 </div>
+
+
+## CLI Usage
+
+Run the following command to generate a graph visualisation of the `math` package:
+
+```
+pkgviz -p math -o output/viz.svg
+```
+
+The above command generates an SVG output.
