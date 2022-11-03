@@ -10,6 +10,8 @@ black==22.10.0
     # via -r requirements-dev.in
 bleach==5.0.1
     # via readme-renderer
+build==0.9.0
+    # via -r requirements-dev.in
 bump2version==1.0.1
     # via bumpversion
 bumpversion==0.6.0
@@ -63,9 +65,13 @@ mypy-extensions==0.4.3
 nodeenv==1.7.0
     # via pre-commit
 packaging==21.3
-    # via pytest
+    # via
+    #   build
+    #   pytest
 pathspec==0.10.1
     # via black
+pep517==0.13.0
+    # via build
 pkginfo==1.8.3
     # via twine
 platformdirs==2.5.2
@@ -113,8 +119,10 @@ toml==0.10.2
 tomli==2.0.1
     # via
     #   black
+    #   build
     #   coverage
     #   mypy
+    #   pep517
     #   pytest
 twine==4.0.1
     # via -r requirements-dev.in

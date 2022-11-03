@@ -9,6 +9,7 @@ mypy
 pytest
 pytest-cov
 bumpversion
+build
 setuptools
 wheel
 twine
