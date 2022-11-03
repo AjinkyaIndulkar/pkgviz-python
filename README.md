@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="150px" src="assets/logo.png" alt="logo" style="padding-top:50px;padding-bottom:50px">
+<img width="150px" src="https://raw.githubusercontent.com/AjinkyaIndulkar/pkgviz-python/main/assets/logo.png" alt="logo" style="padding-top:50px;padding-bottom:50px">
 
 <h1> pkgviz-python </h1>
 
@@ -52,6 +52,6 @@ The above command should generate an SVG output as below:
 
 <div align="center">
 
-<img width="600px" src="assets/viz-demo.svg" alt="demo-viz" style="padding-top:50px;padding-bottom:50px">
+<img width="600px" src="https://raw.githubusercontent.com/AjinkyaIndulkar/pkgviz-python/main/assets/viz-demo.svg" alt="demo-viz" style="padding-top:50px;padding-bottom:50px">
 
 </div>
